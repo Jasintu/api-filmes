@@ -1,0 +1,11 @@
+<div class="search-movies" >
+    <div class="logo" [routerLink]="['/home']">
+        <img src="assets/logo.png" (click)="toggleVisibility2()">
+    </div>
+    <input type="text" name="movie" placeholder="Digite o nome do filme" [(ngModel)]="valorInput">
+    <button (click)="toggleVisibility()" >
+        <mat-icon>search</mat-icon>
+    </button>
+</div>
+<router-outlet *ngIf="isVisible2"></router-outlet>
+<app-search [valorRecebido]="valorInput" *ngIf="isVisible"></app-search>

@@ -1,0 +1,44 @@
+<div class="container" *ngIf="isVisible">
+    <div class="content">
+        <ul class="movies-result">
+            <div *ngIf="movieResults.length === 0" class="notfound">
+                <p>Nenhum resultado encontrado.</p>
+            </div>
+            <li *ngFor="let filme of movieResults" class="movie-item">
+                <div class="content-movie">
+                  <div class="content-img">
+                      <img *ngIf="filme.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + filme.poster_path" alt="{{ filme.title }}" width="250">
+                  </div>
+                    <div class="info">
+                        <h3 class="title" title="{{ filme.title }}">{{ filme.title }}</h3>
+                        <span class="rate">
+                               {{ filme.vote_average | number:'1.2-2' }}/10
+                              <mat-icon class="star">
+                                  star
+                              </mat-icon>
+                         </span>
+                        <button class="details" (click)="details(filme)">Detalhes</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+  </div>
+  <div class="container" *ngIf="isVisible2">
+    <div class="content_details">
+        <div class="flex">
+            <button (click)="back()" class="back">Voltar</button>
+            <img *ngIf="img" [src]="'https://image.tmdb.org/t/p/w500' + img" alt="{{ img }}" width="350">
+            <h1>{{ title }}</h1>
+            <span class="rate">
+                {{ vote_average | number:'1.2-2' }}/10
+               <mat-icon class="star">
+                   star
+               </mat-icon>
+            </span>
+            <p>Lançamento: {{ release_date }}</p>
+            <h3>{{ overview }}</h3>
+        </div>
+    </div>
+</div>
+  
